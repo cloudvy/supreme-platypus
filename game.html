@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- /*fonts*/ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@600&display=swap" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Manrope&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
+
+    :root {
+      --sqrClr: hsl(234, 61%, 50%);
+      --showSqr: white;
+    }
+
+    body {
+      background-color: rgb(43, 126, 243);
+      max-height: 100vh !important;
+    }
+
+    .unselectable {
+      user-select: none;
+    }
+
+    .intro {
+      margin-top: 50vh;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .lvl {
+      padding: 1.6rem;
+      font-weight: 700;
+      font-size: 2rem;
+      display: block;
+      text-align: center;
+      color: white;
+    }
+
+    .sqr-container {
+      margin: 1rem auto 0;
+      display: grid;
+      grid-template-columns: repeat(3, auto);
+      grid-gap: 1rem;
+      width: fit-content;
+    }
+
+    .sqr {
+      display: inline-block;
+      min-width: 132px;
+      min-height: 132px;
+      border-radius: .5rem;
+      background-color: var(--sqrClr);
+
+      transition: .2fs;
+    }
+
+    .sqr:hover {
+      background-color: hsla(234, 61%, 50%, 0.768);
+    }
+
+    /*Before button cliked*/
+
+    .txt {
+      text-align: center;
+    }
+
+    .txt-container>* {
+      color: white;
+    }
+
+    .txt-container>h2 {
+      font-family: 'Manrope', sans-serif;
+      font-size: 4rem;
+      letter-spacing: .2rem;
+    }
+
+    .txt-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 300px;
+    }
+
+    .btn {
+      margin: auto auto;
+      font-size: 1.5rem;
+      letter-spacing: 1px;
+      font-family: 'Titillium Web', sans-serif;
+      color: white;
+      background-color: hsl(50, 100%, 60%);
+      padding: .5rem 1.8rem;
+      border-radius: .2rem;
+    }
+
+    .btn:hover {
+      background-color: hsl(50, 100%, 70%);
+      cursor: pointer;
+    }
+
+    .hide {
+      display: none !important;
+    }
+
+    /* After start */
+    .game {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    /*after game*/
+    .endGame {
+      color: white;
+      margin-top: 50vh;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      justify-items: center;
+    }
+
+    .endGame>h2:first-of-type {
+      font-size: 3.5rem;
+    }
+
+    .results {
+      display: flex;
+      align-self: center;
+      gap: 4rem;
+      margin: 2em 0 1em;
+    }
+
+    .newRecord {
+      color: rgb(190, 211, 222);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Before Start -->
+  <div class="intro">
+    <div class="image-container"><img src="./imgs/forestSVG.svg" alt="Game Preview"></div>
+    <div class="txt-container">
+      <h2 class="txt">Sequence Memory Test</h2>
+      <h3 class="txt">Memorize the pattern</h3>
+      <bnt class="btn" onclick="startGame()" id="startBtn">Start</bnt>
+    </div>
+  </div>
+  <!-- After Start -->
+  <div class="game hide">
+    <h2 class="lvl unselectable newRecord">Level: <span id="lvl" style="color: white !important"></span></h2>
+    <div class="sqr-container">
+    </div>
+  </div>
+  <div class="endGame hide">
+    <div class="image-container"><img src="./imgs/forestSVG.svg" alt="Game Preview"></div>
+    <h2>Memorise the pattern</h2>
+    <div class="results">
+      <h2 class="txt">Current score: <span id="currScore"></span></h2>
+      <h2 class="txt">Max score: <span id="maxScore"></span></h2>
+    </div>
+    <button class="btn" onclick="startGame()">Try again</button>
+  </div>
+  <script src="game.js"></script>
+</body>
+
+</html>
